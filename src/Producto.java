@@ -1,22 +1,19 @@
 public abstract class Producto {
-
+    private String nombre;
+    private double alto;
+    private double ancho;
     private String material;
-    private double precio;
 
-    public Producto (String material, double precio) {
+    public Producto(String nombre, double alto, double ancho, String material) {
+        this.nombre = nombre;
+        this.alto = alto;
+        this.ancho = ancho;
         this.material = material;
-        this.precio = precio;
-    }
-
-    public double getPrecio() {
-        return precio;
     }
 
     public String getMaterial() {
         return material;
     }
 
-    public abstract void mostrarDetalles();
-
-    public abstract void fabricar();
+    public abstract boolean verificarProduccion(Maquina maquina);
 }
