@@ -1,6 +1,6 @@
 public abstract class Maquina {
-    protected String nombre;
-    protected double costoOperacion;
+    private String nombre;
+    private double costoOperacion;
 
     public Maquina(String nombre, double costoOperacion) {
         this.nombre = nombre;
