@@ -1,2 +1,2 @@
-public class MaquinaMenor {
+public class MaquinaMenor extends Maquina {
 }
