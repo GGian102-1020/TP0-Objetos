@@ -1,11 +1,25 @@
+import java.util.HashSet;
+import java.util.Set;
+
 public class MaquinaMenor extends Maquina {
+
+    private Set<String> materialesAceptados;
+    private Set<String> productosNoAceptados;
 
     public MaquinaMenor(String nombre, double costoOperacion) {
         super(nombre, costoOperacion);
+        this.materialesAceptados = new HashSet<>();
+        materialesAceptados.add("Plastico");;
+        materialesAceptados.add("Madera");
+        this.productosNoAceptados = new HashSet<>();
+        productosNoAceptados.add("Porton");
+        productosNoAceptados.add("Ventanas");
+
     }
 
     public boolean puedeFabricar(Producto producto) {
-        return producto.getAncho() <= 120 && producto.getAlto() <= 120;
+        return producto.getAncho() <= 120 && producto.getAlto() <= 120 && materialesAceptados.contains(producto.getMaterial())
+                && !productosNoAceptados.contains(producto.getNombre());
     }
 
     @Override
