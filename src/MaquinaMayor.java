@@ -4,7 +4,7 @@ public class MaquinaMayor extends Maquina {
         super(nombre, costoOperacion);
     }
 
-    @Override
+
     public boolean puedeFabricar(Producto producto) {
         return true;
     }
