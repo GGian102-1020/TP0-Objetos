@@ -10,11 +10,14 @@ public class MaquinaMenor extends Maquina {
 
     @Override
     public boolean UsarMaquina(Producto producto) {
-        return this.Uso = puedeFabricar(producto);
+        if(this.uso){
+            return false;
+        }
+        return this.uso = puedeFabricar(producto);
     }
 
     @Override
     public boolean enUso() {
-        return this.Uso;
+        return this.uso;
     }
 }

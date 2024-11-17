@@ -1,5 +1,5 @@
 public abstract class Maquina {
-    protected boolean Uso;
+    protected boolean uso;
     private String nombre;
     private double costoOperacion;
 
