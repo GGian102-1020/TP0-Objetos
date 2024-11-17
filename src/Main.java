@@ -3,5 +3,11 @@
 public class Main {
     public static void main(String[] args) {
 
+        MaquinaMenor A= new MaquinaMenor("Prueba",10);
+        Producto Ab = new PuertaPrueba("Puerta",120,120,"Madera");
+        System.out.println(A.puedeFabricar(Ab));
+        A.UsarMaquina();
+        System.out.println(A.enUso());
+
     }
 }

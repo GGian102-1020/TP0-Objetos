@@ -8,4 +8,14 @@ public class MaquinaMayor extends Maquina {
     public boolean puedeFabricar(Producto producto) {
         return true;
     }
+    @Override
+    public boolean UsarMaquina() {
+        return this.Uso= true;
+    }
+
+    @Override
+    public boolean enUso() {
+        return this.Uso;
+    }
 }
+
