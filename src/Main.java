@@ -6,7 +6,7 @@ public class Main {
         MaquinaMenor A= new MaquinaMenor("Prueba",10);
         Producto Ab = new PuertaPrueba("Puerta",120,120,"Madera");
         System.out.println(A.puedeFabricar(Ab));
-        A.UsarMaquina();
+        System.out.println(A.UsarMaquina(Ab));
         System.out.println(A.enUso());
 
     }

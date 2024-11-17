@@ -9,7 +9,7 @@ public class MaquinaMayor extends Maquina {
         return true;
     }
     @Override
-    public boolean UsarMaquina() {
+    public boolean UsarMaquina(Producto producto) {
         return this.Uso= true;
     }
 
