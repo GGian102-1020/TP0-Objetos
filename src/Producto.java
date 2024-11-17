@@ -22,7 +22,12 @@ public abstract class Producto {
         return ancho;
     }
 
+    public String getNombre(){
+        return nombre;
+    }
+
     public abstract boolean verificarProduccion(Maquina maquina);
+
 
 
 }
