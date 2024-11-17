@@ -14,6 +14,15 @@ public abstract class Producto {
     public String getMaterial() {
         return material;
     }
+    public double getAlto(){
+        return alto;
+    }
+
+    public double getAncho(){
+        return ancho;
+    }
 
     public abstract boolean verificarProduccion(Maquina maquina);
+
+
 }

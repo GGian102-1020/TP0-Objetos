@@ -5,6 +5,7 @@ public class MaquinaMenor extends Maquina {
     }
 
     public boolean puedeFabricar(Producto producto) {
-            return true ;
+        return producto.getAncho() < 120 && producto.getAlto() < 120;
     }
+
 }
