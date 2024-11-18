@@ -12,8 +12,16 @@ public class Accesorio extends Producto implements Pesable {
 
     @Override
     public double calcularPrecioPorPeso(double peso) {
-        double tarifaPorPeso = 10.0;
-        return peso * tarifaPorPeso;
+        try {
+            if (peso <= 0) {
+                throw new IllegalArgumentException("El peso debe ser mayor a 0");
+            }
+            double tarifaPorPeso = 10.0;
+            return peso * tarifaPorPeso;
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            return 0;
+        }
     }
 
     @Override
