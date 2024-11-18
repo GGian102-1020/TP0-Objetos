@@ -18,8 +18,7 @@ public class MaquinaMenor extends Maquina {
     }
 
     public boolean puedeFabricar(Producto producto) {
-        return producto.getAncho() <= 120 && producto.getAlto() <= 120 && materialesAceptados.contains(producto.getMaterial())
-                && !productosNoAceptados.contains(producto.getNombre());
+        return producto.getAncho() <= 120 && producto.getAlto() <= 120 && materialesAceptados.contains(producto.getMaterial());
     }
 
     @Override

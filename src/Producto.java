@@ -1,8 +1,12 @@
+import java.util.List;
+
 public abstract class Producto {
     private String nombre;
     private double alto;
     private double ancho;
     private String material;
+    protected String estado;
+    protected List<String> estados = List.of("en espera", "en producción", "terminado");
 
     public Producto(String nombre, double alto, double ancho, String material) {
         this.nombre = nombre;
