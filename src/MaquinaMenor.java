@@ -9,8 +9,8 @@ public class MaquinaMenor extends Maquina {
     private Set<String> productosNoAceptados;
 
 
-    @Override
-    public void crearMaquina(String nombre, double costoOperacion) {
+    
+    public MaquinaMenor(String nombre, double costoOperacion) {
         super(nombre, costoOperacion);
         this.materialesAceptados = new HashSet<>();
         materialesAceptados.add("Plastico");;
