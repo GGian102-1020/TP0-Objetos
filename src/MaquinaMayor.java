@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class MaquinaMayor extends Maquina {
     protected ArrayList<String> ColaProcesos;
 
-    @Override
-    public void crearMaquina (String nombre, double costoOperacion) {
+
+    public MaquinaMayor(String nombre, double costoOperacion) {
         super(nombre, costoOperacion);
     }
 
