@@ -12,7 +12,7 @@ public class Accesorio extends Producto implements Pesable {
 
     @Override
     public double calcularPrecioPorPeso(double peso) {
-        double tarifaPorPeso = 10.0; // ejemplo
+        double tarifaPorPeso = 10.0;
         return peso * tarifaPorPeso;
     }
 
