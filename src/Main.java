@@ -28,7 +28,6 @@ public class Main {
         productos.add(ProductoA);
         productos.add(ProductoB);
         productos.add(ProductoC);
-        System.out.println((productos.get(1).getEstado()));
         maquinaMenor.fabricar(ProductoA);
         maquinaMenor.fabricar(ProductoB);
         maquinaMenor.fabricar(ProductoC);
@@ -73,31 +72,37 @@ public class Main {
                             System.out.println("2. Deuda");
                             System.out.println("3. Salir");
                             int subOpcion = scanner.nextInt();
-                            switch (subOpcion) {
-                                case 1:
-                                    System.out.println(subOpcion);
-                                    for (int n = 0; n < productos.size(); n++) {
-                                        if (productos.get(n).getNroCliente() == nroCliente) {
-                                            System.out.println(productos.get(n).getNombre() +" : " + productos.get(n).getEstado());
+                            while (subOpcion != 3) {
+                                switch (subOpcion) {
+                                    case 1:
+                                        System.out.println(subOpcion);
+                                        for (int n = 0; n < productos.size(); n++) {
+                                            if (productos.get(n).getNroCliente() == nroCliente) {
+                                                System.out.println(productos.get(n).getNombre() + " : " + productos.get(n).getEstado());
 
+                                            }
                                         }
-                                    }
-                                    break;
-                                case 2:
-                                    // Código para ver deuda
-                                    System.out.println("Deuda...");
-                                    break;
-                                case 3:
-                                    // Salir
-                                    break;
-                                default:
-                                    System.out.println("Opción no válida");
+                                        System.out.println("¿Qué más puedo hacer por vos?");
+                                        System.out.println("1. Estado de productos");
+                                        System.out.println("2. Deuda");
+                                        System.out.println("3. Salir");
+                                        subOpcion=scanner.nextInt();
+                                        break;
+                                    case 2:
+                                        // Código para ver deuda
+                                        System.out.println("Deuda...");
+                                        break;
+                                    case 3:
+                                        // Salir
+                                        break;
+                                    default:
+                                        System.out.println("Opción no válida");
+
+                                }
                             }
-                            break;
-                        case 3:
-                            break;
                     }
                 }
+
 
             case 2:
                 System.out.println("Ingrese la contraseña: ");
