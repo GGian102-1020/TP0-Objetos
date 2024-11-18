@@ -30,6 +30,9 @@ public abstract class Producto {
     public String getNombre(){
         return nombre;
     }
+    public int getNroCliente(){
+        return nroCliente;
+    }
 
     public abstract boolean verificarProduccion(Maquina maquina);
 
