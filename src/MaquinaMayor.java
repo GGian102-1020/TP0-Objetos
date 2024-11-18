@@ -4,7 +4,7 @@ public class MaquinaMayor extends Maquina {
     protected ArrayList<String> ColaProcesos;
 
     @Override
-    public crearMaquina void (String nombre, double costoOperacion) {
+    public void crearMaquina (String nombre, double costoOperacion) {
         super(nombre, costoOperacion);
     }
 
