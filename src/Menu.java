@@ -26,15 +26,21 @@ public class Menu implements MenuA{
                     case 1:
                         System.out.println("Ingresar el nombre de cliente: ");
                         String NombreCliente= scanner.nextLine();
-
-
+                        // Quiero hacer que en la coleccion (Lista) de clientes se cree un cliente con el "Nombre"
+                        // y un INT "NroCliente" (de 3 dígitos)
 
                     case 2:
-
+                        int nroCliente= scanner.nextInt();
+                        //for n in range(0, len(ListaClientes))
+                        // if(
+                        // ListaClientes[n][1]==nroCliente)
+                        // sout
 
 
                     case 3:
                         break;
+                    default:
+                        System.out.println("Opción no válida");
                 }
 
             case 2:
@@ -45,13 +51,18 @@ public class Menu implements MenuA{
                     intentos+=1;
                     System.out.println("1. Ver pedidos por cliente");
                     System.out.println("2. Ver cola por máquinas");
+                    System.out.println("3. Volver atrás");
                     int opcionA= scanner.nextInt();
                     switch (opcionA) {
                         case 1:
                             System.out.println("Ingrese el número de cliente: ");
                             int nCliente= scanner.nextInt();
-
-
+                            intentos=3;
+                        case 2:
+                            System.out.println("Cola por maquinas");
+                            intentos=3;
+                        case 3:
+                            break;
 
                     }
                 }
@@ -63,8 +74,8 @@ public class Menu implements MenuA{
 
                 break;
             case 3:
-                System.out.println("Saliendo...");
                 break;
+
             default:
                 System.out.println("Opción no válida");
         }
