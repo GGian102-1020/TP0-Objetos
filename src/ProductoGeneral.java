@@ -1,15 +1,24 @@
 public class ProductoGeneral extends Producto implements Pesable {
 
     private double precioPorKilo;
+    private int n;
 
     public ProductoGeneral(String nombre, double alto, double ancho, String material, double precioPorKilo) {
         super(nombre, alto, ancho, material);
         this.precioPorKilo = precioPorKilo;
+        int n = 0;
+        this.estado = (estados.get(n));
     }
 
     @Override
     public boolean verificarProduccion(Maquina maquina) {
         return maquina.puedeFabricar(this);
+    }
+
+    public void usarMaquina(Maquina maquina){
+        if (maquina.puedeFabricar(this) && !maquina.enUso()){
+            this.estado=(estados.get(n+1));
+        }
     }
 
     @Override
@@ -25,4 +34,3 @@ public class ProductoGeneral extends Producto implements Pesable {
         }
     }
 }
-
