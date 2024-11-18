@@ -8,7 +8,7 @@ public class Menu implements MenuA{
     private int intentos = 0;
     private int password = 2430;
     private int PassIngresada;
-    int nroCliente;
+    int nroCliente = 0;
     HashMap<Integer, String> clientes = new HashMap<>();
 
     Scanner scanner = new Scanner(System.in);
@@ -29,19 +29,29 @@ public class Menu implements MenuA{
                 System.out.println("2. Ingresar numero de cliente");
                 System.out.println("3. Volver atrás");
                 opcion=scanner.nextInt();
-                switch(opcion){
+                switch(opcion) {
                     case 1:
                         System.out.println("Ingresar el nombre de cliente: ");
-                        String NombreCliente= scanner.nextLine();
+                        String NombreCliente = scanner.nextLine();
+                        while (NombreCliente.isBlank()) {
+                            NombreCliente = scanner.nextLine();
+                        }
+
+
                         Random random = new Random();
-                        do {nroCliente = random.nextInt(99) + 1;
-                        } while (clientes.containsKey(nroCliente));
+                        while (clientes.containsKey(nroCliente) || nroCliente==0 ){
+                            nroCliente= random.nextInt(99)+1;
+                        }
 
                         clientes.put(nroCliente, NombreCliente);
-                        System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente    );
+                        System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
 
                     case 2:
-                        int nroCliente= scanner.nextInt();
+                        nroCliente= scanner.nextInt();
+                        while(!clientes.containsKey(nroCliente)){
+                            System.out.println("Ingrese el número de cliente correctamente: ");
+                            nroCliente= scanner.nextInt();
+                        }
                         //for n in range(0, len(ListaClientes))
                         // if(
                         // ListaClientes[n][1]==nroCliente)
