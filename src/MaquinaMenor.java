@@ -13,9 +13,6 @@ public class MaquinaMenor extends Maquina {
         this.materialesAceptados = new HashSet<>();
         materialesAceptados.add("Plastico");;
         materialesAceptados.add("Madera");
-        this.productosNoAceptados = new HashSet<>();
-        productosNoAceptados.add("Porton");
-        productosNoAceptados.add("Ventanas");
 
     }
 
@@ -25,10 +22,12 @@ public class MaquinaMenor extends Maquina {
 
     @Override
     public boolean Fabricar(Producto producto) {
-        if(this.uso){
-            return false;
+        if (this.uso && puedeFabricar(producto)) {
+            ColaProcesos.add(producto.getNombre());
+            producto.estado = producto.estados.get(1);
         }
-        return this.uso = puedeFabricar(producto);
+        producto.estado = producto.estados.get(2);
+        return this.uso = true;
     }
 
     @Override

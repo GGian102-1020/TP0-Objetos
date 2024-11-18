@@ -1,5 +1,7 @@
-public class MaquinaMayor extends Maquina {
+import java.util.ArrayList;
 
+public class MaquinaMayor extends Maquina {
+    protected ArrayList<String> ColaProcesos;
     public MaquinaMayor(String nombre, double costoOperacion) {
         super(nombre, costoOperacion);
     }
@@ -12,8 +14,10 @@ public class MaquinaMayor extends Maquina {
     @Override
     public boolean Fabricar(Producto producto) {
         if(this.uso){
-            return false;
+            ColaProcesos.add(producto.getNombre());
+            producto.estado=producto.estados.get(1);
         }
+        producto.estado=producto.estados.get(2);
         return this.uso= true;
     }
 
