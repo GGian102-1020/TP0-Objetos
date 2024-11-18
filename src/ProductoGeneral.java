@@ -1,11 +1,15 @@
 public class ProductoGeneral extends Producto implements Pesable {
 
     private double precioPorKilo;
+    private double peso;
+    private double precio;
     private int n;
 
-    public ProductoGeneral(String nombre, double alto, double ancho, String material, double precioPorKilo) {
+    public ProductoGeneral(String nombre, double alto, double ancho, String material, double peso, double precioPorKilo) {
         super(nombre, alto, ancho, material);
+        this.peso = peso;
         this.precioPorKilo = precioPorKilo;
+        this.precio = 0;
         int n = 0;
         this.estado = (estados.get(n));
     }
@@ -15,9 +19,9 @@ public class ProductoGeneral extends Producto implements Pesable {
         return maquina.puedeFabricar(this);
     }
 
-    public void usarMaquina(Maquina maquina){
-        if (maquina.puedeFabricar(this) && !maquina.enUso()){
-            this.estado=(estados.get(n+1));
+    public void usarMaquina(Maquina maquina) {
+        if (maquina.puedeFabricar(this) && !maquina.enUso()) {
+            this.estado = (estados.get(n + 1));
         }
     }
 
@@ -27,10 +31,15 @@ public class ProductoGeneral extends Producto implements Pesable {
             if (peso <= 0) {
                 throw new IllegalArgumentException("El peso debe ser mayor a 0");
             }
-            return peso * precioPorKilo;
+            this.precio = peso * precioPorKilo;
+            return this.precio;
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
             return 0;
         }
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 }
