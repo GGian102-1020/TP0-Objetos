@@ -3,7 +3,7 @@ public abstract class Maquina {
     private String nombre;
     private double costoOperacion;
 
-    public abstract crearMaquina ();
+    public abstract void crearMaquina ();
 
     public abstract boolean puedeFabricar(Producto producto);
 
