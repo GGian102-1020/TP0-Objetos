@@ -12,7 +12,7 @@ public class MaquinaMayor extends Maquina {
     }
 
     @Override
-    public boolean Fabricar(Producto producto) {
+    public boolean fabricar(Producto producto) {
         if(this.uso){
             ColaProcesos.add(producto.getNombre());
             producto.estado=producto.estados.get(1);
