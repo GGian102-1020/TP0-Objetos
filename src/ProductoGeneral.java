@@ -44,8 +44,7 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
             if (tam <= 0) {
                 throw new IllegalArgumentException("El tamaño debe ser mayor a 0");
             }
-            this.precio = tam * precioPorTam;
-            return this.precio;
+            return tam * precioPorTam;
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
             return 0;

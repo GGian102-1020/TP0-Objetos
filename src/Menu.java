@@ -88,7 +88,7 @@ public class Menu implements MenuA {
                 }
 
 
-            case 2:
+                case 2:
                 System.out.println("Ingrese la contraseña: ");
                 int PassIngresada= scanner.nextInt();
                 while (intentos<2)
