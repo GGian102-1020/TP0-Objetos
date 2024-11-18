@@ -1,6 +1,6 @@
 public abstract class Maquina {
     protected boolean uso;
-    private String nombre;
+    protected String nombre;
     private double costoOperacion;
 
     public Maquina (String nombre, double costoOperacion){
