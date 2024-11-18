@@ -39,10 +39,17 @@ public class Accesorio extends Producto implements CalcularPrecio {
             return 0;
         }
     }
-
-
+    
     @Override
     public boolean verificarProduccion(Maquina maquina) {
         return maquina.puedeFabricar(this);
+    }
+
+    public double getTam() {
+        return peso;
+    }
+
+    public double getPrecio() {
+        return precio;
     }
 }
