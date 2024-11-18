@@ -45,17 +45,26 @@ public class Menu implements MenuA{
 
                         clientes.put(nroCliente, NombreCliente);
                         System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
+                        nroCliente=0;
+                        ejecutarOpcion(1);
 
                     case 2:
-                        nroCliente= scanner.nextInt();
                         while(!clientes.containsKey(nroCliente)){
-                            System.out.println("Ingrese el número de cliente correctamente: ");
+                            System.out.println("Ingrese el número de cliente: ");
                             nroCliente= scanner.nextInt();
                         }
-                        //for n in range(0, len(ListaClientes))
-                        // if(
-                        // ListaClientes[n][1]==nroCliente)
-                        // sout
+                        System.out.println("Bienvenido " + clientes.get(nroCliente));
+                        System.out.println("Qué quieres saber hoy? ");
+                        System.out.println("1. Estado de productos");
+                        System.out.println("2. Deuda");
+                        System.out.println("3. Salir");
+                        opcion=scanner.nextInt();
+                        switch(opcion){
+                            case 1:
+                                System.out.println();
+                        }
+
+
 
 
                     case 3:
@@ -63,6 +72,7 @@ public class Menu implements MenuA{
                     default:
                         System.out.println("Opción no válida");
                 }
+
 
             case 2:
                 System.out.println("Ingrese la contraseña: ");
