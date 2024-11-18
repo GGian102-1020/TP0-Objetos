@@ -1,9 +1,16 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Random;
 import java.util.Scanner;
+import java.util.random.RandomGenerator;
 
 public class Menu implements MenuA{
     private int intentos = 0;
     private int password = 2430;
     private int PassIngresada;
+    int nroCliente;
+    HashMap<Integer, String> clientes = new HashMap<>();
+
     Scanner scanner = new Scanner(System.in);
 
     @Override
@@ -26,8 +33,12 @@ public class Menu implements MenuA{
                     case 1:
                         System.out.println("Ingresar el nombre de cliente: ");
                         String NombreCliente= scanner.nextLine();
-                        // Quiero hacer que en la coleccion (Lista) de clientes se cree un cliente con el "Nombre"
-                        // y un INT "NroCliente" (de 3 dígitos)
+                        Random random = new Random();
+                        do {nroCliente = random.nextInt(99) + 1;
+                        } while (clientes.containsKey(nroCliente));
+
+                        clientes.put(nroCliente, NombreCliente);
+                        System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente    );
 
                     case 2:
                         int nroCliente= scanner.nextInt();
