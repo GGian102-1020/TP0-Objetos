@@ -45,6 +45,8 @@ public class MaquinaMenor extends Maquina {
         return ColaProcesos;
     }
 
+
+
     public String getNombre() {
         return nombre;
     }

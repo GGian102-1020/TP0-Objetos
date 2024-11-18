@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.random.RandomGenerator;
 
 public class Menu implements MenuA {
     private int intentos = 0;
@@ -55,6 +54,8 @@ public class Menu implements MenuA {
                         while (!clientes.containsKey(nroCliente)) {
                             System.out.println("Ingrese el número de cliente: ");
                             nroCliente = scanner.nextInt();
+
+                            System.out.println(clientes);
                         }
                         System.out.println("Bienvenido " + clientes.get(nroCliente));
                         System.out.println("Qué quieres saber hoy? ");

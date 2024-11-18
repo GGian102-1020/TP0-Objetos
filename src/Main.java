@@ -17,73 +17,78 @@ public class Main {
         HashMap<String, Integer> clientesInfo = new HashMap<>();
         List<ProductoGeneral> productos = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        Menu menu= new Menu();
-        MaquinaMenor maquinaMenor= new MaquinaMenor("A",200);
+        Menu menu = new Menu();
+        MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
         menu.mostrar();
-        ProductoGeneral ProductoA= new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
-        ProductoGeneral ProductoB= new ProductoGeneral("Puerta", 100, 110, "Madera", 10);
-        ProductoGeneral ProductoC= new ProductoGeneral("Ventana", 100, 110, "Madera", 10);
+        ProductoGeneral ProductoA = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
+        ProductoGeneral ProductoB = new ProductoGeneral("Puerta", 100, 110, "Madera", 10);
+        ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 110, "Madera", 10);
+        ProductoB.setNroCliente(23);
+        ProductoC.setNroCliente(23);
+        productos.add(ProductoA);
+        productos.add(ProductoB);
+        productos.add(ProductoC);
         maquinaMenor.fabricar(ProductoA);
         maquinaMenor.fabricar(ProductoB);
         maquinaMenor.fabricar(ProductoC);
-        opcion=scanner.nextInt();
+        opcion = scanner.nextInt();
         switch (opcion) {
             case 1:
-                System.out.println("1. Crear numero de cliente");
-                System.out.println("2. Ingresar numero de cliente");
+                System.out.println("1. Crear cliente");
+                System.out.println("2. Acceder a un cliente");
                 System.out.println("3. Volver atrás");
                 opcion = scanner.nextInt();
                 switch (opcion) {
                     case 1:
+                        // Opción 1: Agregar un cliente
                         System.out.println("Ingresar el nombre de cliente: ");
                         String NombreCliente = scanner.nextLine();
                         while (NombreCliente.isBlank()) {
                             NombreCliente = scanner.nextLine();
                         }
-
-
-                        Random random = new Random();
+                        // Generar un número de cliente único
                         while (clientes.containsKey(nroCliente) || nroCliente == 0) {
-                            nroCliente = random.nextInt(99) + 1;
+                            Random random = new Random();
+                            nroCliente = 23;//random.nextInt(99) + 1;
                         }
+
+
+                        // Crear el HashMap de cliente con nombre y valor
                         clientesInfo.put(NombreCliente, 0);
-                        clientes.put(nroCliente, (clientesInfo));
+                        clientes.put(nroCliente, clientesInfo);
                         System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
                         nroCliente = 0;
-                        menu.ejecutarOpcion(1);
-
+                            break;
                     case 2:
+                        // Opción 2: Acceder a un cliente
                         while (!clientes.containsKey(nroCliente)) {
                             System.out.println("Ingrese el número de cliente: ");
                             nroCliente = scanner.nextInt();
                         }
                         System.out.println("Bienvenido " + clientes.get(nroCliente));
-                        System.out.println("Qué quieres saber hoy? ");
+                        System.out.println("¿Qué quieres saber hoy?");
                         System.out.println("1. Estado de productos");
                         System.out.println("2. Deuda");
                         System.out.println("3. Salir");
-                        opcion = scanner.nextInt();
-                        switch (opcion) {
+                        int subOpcion = scanner.nextInt();
+                        switch (subOpcion) {
                             case 1:
-                                Iterator<ProductoGeneral> iteracion = productos.iterator();
-                                while (iteracion.hasNext()) {
-                                    ProductoGeneral productoA= iteracion.next();
-                                    if (productoA.getNroCliente() == nroCliente) {
-                                        System.out.println(iteracion);
-                                    }
-                                }
+                                // Código para ver estado de productos
+                                // Iteración de productos simulada
+                                // Aquí deberías tener tu lógica real para productos
+                                System.out.println("Estado de productos...");
+                                break;
                             case 2:
+                                // Código para ver deuda
+                                System.out.println("Deuda...");
+                                break;
                             case 3:
+                                // Salir
                                 break;
                             default:
-                                System.out.println("Opcion no válida");
+                                System.out.println("Opción no válida");
                         }
-
-
-                    case 3:
                         break;
-                    default:
-                        System.out.println("Opción no válida");
                 }
 
 
@@ -101,12 +106,17 @@ public class Main {
                             case 1:
                                 System.out.println("Ingrese el número de cliente: ");
                                 nroCliente = scanner.nextInt();
+                                System.out.println(productos);
+                                for (int n = 0; n < 2; n++)
+                                    if (productos.get(n).getNroCliente() == nroCliente) {
+                                        System.out.println(productos.get(n).getNombre());
+                                    }
                                 intentos = 3;
                             case 2:
                                 System.out.println("Cola por maquinas");
                                 intentos = 3;
-                                String nombreMaquina= scanner.nextLine();
-                                if(maquinaMenor.getNombre() == nombreMaquina);
+                                String nombreMaquina = scanner.nextLine();
+                                if (maquinaMenor.getNombre() == nombreMaquina) ;
 
                                 System.out.println(maquinaMenor.getColaProcesos());
                             case 3:
@@ -131,7 +141,11 @@ public class Main {
                 System.out.println("Opción no válida, cerrando el menu");
         }
     }
+}
 
 
 
-    }
+
+
+
+

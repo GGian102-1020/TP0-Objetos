@@ -33,6 +33,10 @@ public abstract class Producto {
     public int getNroCliente(){
         return nroCliente;
     }
+    public void setNroCliente(int Cliente){
+        this.nroCliente=Cliente;
+    }
+
 
     public abstract boolean verificarProduccion(Maquina maquina);
 
