@@ -34,63 +34,66 @@ public class Main {
         opcion = scanner.nextInt();
         switch (opcion) {
             case 1:
-                System.out.println("1. Crear cliente");
-                System.out.println("2. Acceder a un cliente");
-                System.out.println("3. Volver atrás");
-                opcion = scanner.nextInt();
-                switch (opcion) {
-                    case 1:
-                        // Opción 1: Agregar un cliente
-                        System.out.println("Ingresar el nombre de cliente: ");
-                        String NombreCliente = scanner.nextLine();
-                        while (NombreCliente.isBlank()) {
-                            NombreCliente = scanner.nextLine();
-                        }
-                        // Generar un número de cliente único
-                        while (clientes.containsKey(nroCliente) || nroCliente == 0) {
-                            Random random = new Random();
-                            nroCliente = 23;//random.nextInt(99) + 1;
-                        }
+                while(opcion!=3) {
+                    System.out.println("1. Crear cliente");
+                    System.out.println("2. Acceder a un cliente");
+                    System.out.println("3. Volver atrás");
+                    opcion = scanner.nextInt();
+                    switch (opcion) {
+                        case 1:
+                            // Opción 1: Agregar un cliente
+                            System.out.println("Ingresar el nombre de cliente: ");
+                            String NombreCliente = scanner.nextLine();
+                            while (NombreCliente.isBlank()) {
+                                NombreCliente = scanner.nextLine();
+                            }
+                            // Generar un número de cliente único
+                            while (clientes.containsKey(nroCliente) || nroCliente == 0) {
+                                Random random = new Random();
+                                nroCliente = 23;//random.nextInt(99) + 1;
+                            }
 
 
-                        // Crear el HashMap de cliente con nombre y valor
-                        clientesInfo.put(NombreCliente, 0);
-                        clientes.put(nroCliente, clientesInfo);
-                        System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
-                        nroCliente = 0;
+                            // Crear el HashMap de cliente con nombre y valor
+                            clientesInfo.put(NombreCliente, 0);
+                            clientes.put(nroCliente, clientesInfo);
+                            System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
+                            nroCliente = 0;
                             break;
-                    case 2:
-                        // Opción 2: Acceder a un cliente
-                        while (!clientes.containsKey(nroCliente)) {
-                            System.out.println("Ingrese el número de cliente: ");
-                            nroCliente = scanner.nextInt();
-                        }
-                        System.out.println("Bienvenido " + clientes.get(nroCliente));
-                        System.out.println("¿Qué quieres saber hoy?");
-                        System.out.println("1. Estado de productos");
-                        System.out.println("2. Deuda");
-                        System.out.println("3. Salir");
-                        int subOpcion = scanner.nextInt();
-                        switch (subOpcion) {
-                            case 1:
-                                // Código para ver estado de productos
-                                // Iteración de productos simulada
-                                // Aquí deberías tener tu lógica real para productos
-                                System.out.println("Estado de productos...");
-                                break;
-                            case 2:
-                                // Código para ver deuda
-                                System.out.println("Deuda...");
-                                break;
-                            case 3:
-                                // Salir
-                                break;
-                            default:
-                                System.out.println("Opción no válida");
-                        }
-                        break;
+                        case 2:
+                            // Opción 2: Acceder a un cliente
+                            while (!clientes.containsKey(nroCliente)) {
+                                System.out.println("Ingrese el número de cliente: ");
+                                nroCliente = scanner.nextInt();
+                            }
+                            System.out.println("Bienvenido " + clientes.get(nroCliente));
+                            System.out.println("¿Qué quieres saber hoy?");
+                            System.out.println("1. Estado de productos");
+                            System.out.println("2. Deuda");
+                            System.out.println("3. Salir");
+                            int subOpcion = scanner.nextInt();
+                            switch (subOpcion) {
+                                case 1:
+                                    // Código para ver estado de productos
+                                    // Iteración de productos simulada
+                                    // Aquí deberías tener tu lógica real para productos
+                                    System.out.println("Estado de productos...");
+                                    break;
+                                case 2:
+                                    // Código para ver deuda
+                                    System.out.println("Deuda...");
+                                    break;
+                                case 3:
+                                    // Salir
+                                    break;
+                                default:
+                                    System.out.println("Opción no válida");
+                            }
+                            break;
+                        case 3:
+                            break;
+                    }
                 }
-
 
             case 2:
                 System.out.println("Ingrese la contraseña: ");
@@ -117,7 +120,7 @@ public class Main {
                                 intentos = 3;
                                 String nombreMaquina = scanner.nextLine();
                                 if (maquinaMenor.getNombre() == nombreMaquina) ;
-
+                                System.out.println();
                                 System.out.println(maquinaMenor.getColaProcesos());
                             case 3:
                                 break;
