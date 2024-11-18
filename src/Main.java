@@ -23,11 +23,12 @@ public class Main {
         ProductoGeneral ProductoA = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
         ProductoGeneral ProductoB = new ProductoGeneral("Puerta", 100, 110, "Madera", 10);
         ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 110, "Madera", 10);
+        ProductoA.setNroCliente(23);
         ProductoB.setNroCliente(23);
-        ProductoC.setNroCliente(23);
         productos.add(ProductoA);
         productos.add(ProductoB);
         productos.add(ProductoC);
+        System.out.println((productos.get(1).getEstado()));
         maquinaMenor.fabricar(ProductoA);
         maquinaMenor.fabricar(ProductoB);
         maquinaMenor.fabricar(ProductoC);
@@ -74,10 +75,13 @@ public class Main {
                             int subOpcion = scanner.nextInt();
                             switch (subOpcion) {
                                 case 1:
-                                    // Código para ver estado de productos
-                                    // Iteración de productos simulada
-                                    // Aquí deberías tener tu lógica real para productos
-                                    System.out.println("Estado de productos...");
+                                    System.out.println(subOpcion);
+                                    for (int n = 0; n < productos.size(); n++) {
+                                        if (productos.get(n).getNroCliente() == nroCliente) {
+                                            System.out.println(productos.get(n).getNombre() +" : " + productos.get(n).getEstado());
+
+                                        }
+                                    }
                                     break;
                                 case 2:
                                     // Código para ver deuda
@@ -110,10 +114,11 @@ public class Main {
                                 System.out.println("Ingrese el número de cliente: ");
                                 nroCliente = scanner.nextInt();
                                 System.out.println(productos);
-                                for (int n = 0; n < 2; n++)
+                                for (int n = 0; n < productos.size(); n++) {
                                     if (productos.get(n).getNroCliente() == nroCliente) {
                                         System.out.println(productos.get(n).getNombre());
                                     }
+                                }
                                 intentos = 3;
                             case 2:
                                 System.out.println("Cola por maquinas");

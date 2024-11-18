@@ -4,14 +4,14 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
     private double precioPorTam = 555.5;
     private double peso;
     private double precio = 0;
-    private int n;
+    private int i;
     private double tam = getAncho() * getAlto();
 
     public ProductoGeneral(String nombre, double alto, double ancho, String material, double peso) {
         super(nombre, alto, ancho, material);
         this.peso = peso;
-        int n = 0;
-        this.estado = (estados.get(n));
+        int i = 0;
+        this.estado = (estados.get(i));
     }
 
     @Override
@@ -21,7 +21,7 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
 
     public void usarMaquina(Maquina maquina) {
         if (maquina.puedeFabricar(this) && !maquina.enUso()) {
-            this.estado = (estados.get(n + 1));
+            this.estado = (estados.get(i + 1));
         }
     }
 
@@ -61,5 +61,9 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
 
     public double getPrecio() {
         return precio;
+    }
+
+    public String getEstado() {
+        return this.estado;
     }
 }
