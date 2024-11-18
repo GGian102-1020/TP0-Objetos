@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class MaquinaMayor extends Maquina {
     protected ArrayList<String> ColaProcesos;
-    public MaquinaMayor(String nombre, double costoOperacion) {
+    public crearMaquina(String nombre, double costoOperacion) {
         super(nombre, costoOperacion);
     }
 
