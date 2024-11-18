@@ -7,6 +7,7 @@ public abstract class Producto {
     private String material;
     protected String estado;
     protected List<String> estados = List.of("en espera", "en producción", "terminado");
+    protected int nroCliente;
 
     public Producto(String nombre, double alto, double ancho, String material) {
         this.nombre = nombre;

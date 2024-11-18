@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 import java.util.random.RandomGenerator;
 
 public class Menu implements MenuA{
@@ -9,7 +6,9 @@ public class Menu implements MenuA{
     private int password = 2430;
     private int PassIngresada;
     int nroCliente = 0;
-    HashMap<Integer, String> clientes = new HashMap<>();
+    HashMap<Integer, HashMap<String, Integer>> clientes = new HashMap<>();
+    HashMap<String, Integer>clientesInfo= new HashMap<>();
+
 
     Scanner scanner = new Scanner(System.in);
 
@@ -42,20 +41,34 @@ public class Menu implements MenuA{
                         while (clientes.containsKey(nroCliente) || nroCliente==0 ){
                             nroCliente= random.nextInt(99)+1;
                         }
-
-                        clientes.put(nroCliente, NombreCliente);
+                        clientesInfo.put(NombreCliente,0);
+                        clientes.put(nroCliente, (clientesInfo));
                         System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
+                        nroCliente=0;
+                        ejecutarOpcion(1);
 
                     case 2:
-                        nroCliente= scanner.nextInt();
                         while(!clientes.containsKey(nroCliente)){
-                            System.out.println("Ingrese el número de cliente correctamente: ");
+                            System.out.println("Ingrese el número de cliente: ");
                             nroCliente= scanner.nextInt();
                         }
-                        //for n in range(0, len(ListaClientes))
-                        // if(
-                        // ListaClientes[n][1]==nroCliente)
-                        // sout
+                        System.out.println("Bienvenido " + clientes.get(nroCliente));
+                        System.out.println("Qué quieres saber hoy? ");
+                        System.out.println("1. Estado de productos");
+                        System.out.println("2. Deuda");
+                        System.out.println("3. Salir");
+                        opcion=scanner.nextInt();
+                        switch(opcion){
+                            case 1:
+                                System.out.println();
+                            case 2:
+                            case 3:
+                                break;
+                            default:
+                                System.out.println("Opcion no válida");
+                        }
+
+
 
 
                     case 3:
@@ -63,6 +76,7 @@ public class Menu implements MenuA{
                     default:
                         System.out.println("Opción no válida");
                 }
+
 
             case 2:
                 System.out.println("Ingrese la contraseña: ");
@@ -77,7 +91,7 @@ public class Menu implements MenuA{
                     switch (opcionA) {
                         case 1:
                             System.out.println("Ingrese el número de cliente: ");
-                            int nCliente= scanner.nextInt();
+                            int nroCliente= scanner.nextInt();
                             intentos=3;
                         case 2:
                             System.out.println("Cola por maquinas");
@@ -91,6 +105,10 @@ public class Menu implements MenuA{
                     intentos+=1;
                     System.out.println("Contraseña incorrecta, le quedan " + (3-intentos) + " intentos más:");
                     PassIngresada= scanner.nextInt();
+                    if(intentos==2){
+                        System.out.println("Se quedó sin intentos, cerrando el programa");
+                        break;
+                    }
                 }
 
                 break;
@@ -98,7 +116,7 @@ public class Menu implements MenuA{
                 break;
 
             default:
-                System.out.println("Opción no válida");
+                System.out.println("Opción no válida, cerrando el menu");
         }
     }
 }
