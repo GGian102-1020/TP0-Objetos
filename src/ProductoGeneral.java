@@ -31,8 +31,7 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
             if (peso <= 0) {
                 throw new IllegalArgumentException("El peso debe ser mayor a 0");
             }
-            this.precio = peso * precioPorKilo;
-            return this.precio;
+            return  peso * precioPorKilo;
         } catch (IllegalArgumentException e) {
             System.out.println("Error: " + e.getMessage());
             return 0;
