@@ -10,7 +10,7 @@ public class MaquinaMayor extends Maquina {
     }
 
     @Override
-    public boolean UsarMaquina(Producto producto) {
+    public boolean Fabricar(Producto producto) {
         if(this.uso){
             return false;
         }

@@ -1,8 +1,10 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 public class MaquinaMenor extends Maquina {
-
+    protected ArrayList<String> ColaProcesos;
     private Set<String> materialesAceptados;
     private Set<String> productosNoAceptados;
 
@@ -22,7 +24,7 @@ public class MaquinaMenor extends Maquina {
     }
 
     @Override
-    public boolean UsarMaquina(Producto producto) {
+    public boolean Fabricar(Producto producto) {
         if(this.uso){
             return false;
         }
