@@ -142,7 +142,7 @@ public class Main {
                                             System.out.println(maquinaMenor.getColaProcesos());
                                         }
                                         if (maquinaMayor.getNombre().equals(nombreMaquina)) {
-                                            System.out.println(maquinaMenor.getColaProcesos());
+                                            System.out.println(maquinaMayor.getColaProcesos());
                                         }
                                         System.out.println("Ingrese una nueva opción: ");
                                         opcionA = scanner.nextInt();

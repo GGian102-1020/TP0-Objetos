@@ -31,5 +31,9 @@ public class MaquinaMayor extends Maquina {
     public String getNombre() {
         return nombre;
     }
+
+    public ArrayList<String> getColaProcesos() {
+        return ColaProcesos;
+    }
 }
 
