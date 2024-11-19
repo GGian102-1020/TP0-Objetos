@@ -112,7 +112,6 @@ public class Main {
                                             ProductoGeneral ProductoNew = new ProductoGeneral(nombProducto, altProducto, anchProducto, matProducto, pesProducto);
                                             ProductoNew.setNroCliente(nroCliente);
                                             System.out.println("Producto cargado correctamente");
-                                            System.out.println(ProductoGeneral.productos);
                                             System.out.println("Elija una nueva opción: ");
                                             opcion = scanner.nextInt();
                                             break;
