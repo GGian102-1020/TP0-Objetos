@@ -22,13 +22,6 @@ public class Main {
         MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
         MaquinaMayor maquinaMayor = new MaquinaMayor("B",500);
         menu.mostrar();
-        ProductoGeneral ProductoA = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
-        ProductoGeneral ProductoB = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
-        ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 100, "Madera", 10);
-        ProductoA.setNroCliente(23);
-        ProductoB.setNroCliente(23);
-        ProductoC.setNroCliente(10);
-        maquinaMenor.fabricar(ProductoA);
 
         opcion = scanner.nextInt();
         switch (opcion) {
@@ -86,7 +79,7 @@ public class Main {
                                             System.out.println("1. Estado de productos");
                                             System.out.println("2. Deuda");
                                             System.out.println("3. Hacer un pedido");
-                                            System.out.println("3. Salir");
+                                            System.out.println("4. Salir");
                                             subOpcion = scanner.nextInt();
                                             break;
                                         case 2:
@@ -97,7 +90,6 @@ public class Main {
                                             subOpcion = scanner.nextInt();
                                             break;
                                         case 3:
-
                                             System.out.println("Ingrese los datos para realizar el pedido");
                                             System.out.println("Nombre: ");
                                             String nombProducto = scanner.next();
@@ -113,7 +105,12 @@ public class Main {
                                             ProductoNew.setNroCliente(nroCliente);
                                             System.out.println("Producto cargado correctamente");
                                             System.out.println("Elija una nueva opción: ");
-                                            opcion = scanner.nextInt();
+                                            System.out.println("1. Estado de productos");
+                                            System.out.println("2. Deuda");
+                                            System.out.println("3. Hacer un pedido");
+                                            System.out.println("4. Salir");
+                                            subOpcion = scanner.nextInt();
+                                            scanner.nextLine();
                                             break;
 
 
@@ -156,6 +153,7 @@ public class Main {
                                         for (ProductoGeneral producto : ProductoGeneral.productos) {
                                             if (producto.getNroCliente() == nroCliente) {
                                                 System.out.println(producto.getNombre());
+                                                intentos=0;
                                             }
                                         }
                                         break;
