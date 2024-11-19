@@ -136,12 +136,14 @@ public class Main {
                                     case 2:
                                         String nombreMaquina = scanner.nextLine();
                                         intentos = 3;
-                                        while(!nombreMaquina.equals(maquinaMenor.getNombre()))
+                                        while(!nombreMaquina.equals(maquinaMenor.getNombre())) {
                                             System.out.println("Ingrese el nombre correcto de la máquina: ");
                                             nombreMaquina = scanner.nextLine();
-                                        System.out.println(nombreMaquina);
-                                        if (maquinaMenor.getNombre() == nombreMaquina) ;
-                                        System.out.println(maquinaMenor.getColaProcesos());
+                                            System.out.println(nombreMaquina);
+                                            if (maquinaMenor.getNombre().equals(nombreMaquina)) {
+                                                System.out.println(maquinaMenor.getColaProcesos());
+                                            }
+                                        }
                                     case 3:
                                         break;
 
