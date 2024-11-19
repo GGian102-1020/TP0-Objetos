@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.*;
 
 public abstract class Producto {
     private String nombre;
@@ -6,7 +7,7 @@ public abstract class Producto {
     private double ancho;
     private String material;
     protected String estado;
-    protected List<String> estados = List.of("en espera", "en producción", "terminado");
+    private static List<String> estados = new ArrayList<>(Arrays.asList("En espera", "En producción", "Terminado"));
     protected int nroCliente;
 
     public Producto(String nombre, double alto, double ancho, String material) {
