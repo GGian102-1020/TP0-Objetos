@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductoGeneral extends Producto implements CalcularPrecio {
 
@@ -10,17 +12,14 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
     private int i;
     private double tam = getAncho() * getAlto();
     static List<ProductoGeneral> productos = new ArrayList<>();
+    private static Map<Integer, Double> clientePrecioMap = new HashMap<>();
 
     public ProductoGeneral(String nombre, double alto, double ancho, String material, double peso) {
         super(nombre, alto, ancho, material);
         this.peso = peso;
-        int i = 0;
-        this.estado = (estados.get(i));
+        this.precio = calcularPrecio();
         productos.add(this);
-
     }
-
-
 
     @Override
     public boolean verificarProduccion(Maquina maquina) {
@@ -58,13 +57,27 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
             return 0;
         }
     }
+
+    private double calcularPrecio() {
+        return calcularPrecioPorPeso(this.peso) + calcularPrecioPorTam(this.tam);
+    }
+
     @Override
-    public void setNroCliente(int reCliente) {
-        this.nroCliente = reCliente;
+    public void setNroCliente(int nroCliente) {
+        super.setNroCliente(nroCliente);
+        agregarClientePrecio(nroCliente);
+    }
+
+    private void agregarClientePrecio(int nroCliente) {
+        clientePrecioMap.put(nroCliente, this.precio);
+    }
+
+    public static Map<Integer, Double> getClientePrecioMap() {
+        return clientePrecioMap;
     }
 
     public double getTam() {
-        return peso;
+        return tam;
     }
 
     public double getPrecio() {
