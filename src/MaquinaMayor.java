@@ -14,13 +14,13 @@ public class MaquinaMayor extends Maquina {
     }
 
     @Override
-    public boolean fabricar(Producto producto) {
+    public void fabricar(Producto producto) {
         if(this.uso){
             ColaProcesos.add(producto.getNombre());
             producto.estado=producto.estados.get(1);
         }
         producto.estado=producto.estados.get(2);
-        return this.uso= true;
+         this.uso= true;
     }
 
     @Override

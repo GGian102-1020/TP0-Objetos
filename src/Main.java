@@ -128,9 +128,10 @@ public class Main {
                             while (true) {
                                 System.out.println("1. Ver pedidos por cliente");
                                 System.out.println("2. Ver cola por máquinas");
-                                System.out.println("3. Volver atrás");
+                                System.out.println("3. Fabricar productos");
+                                System.out.println("4. Volver atrás");
                                 int opcionA = scanner.nextInt();
-                                if (opcionA == 3) break; // Volver al menú principal
+                                if (opcionA == 4) break; // Volver al menú principal
 
                                 switch (opcionA) {
                                     case 1:
@@ -147,11 +148,24 @@ public class Main {
                                         scanner.nextLine();
                                         String nombreMaquina = scanner.nextLine();
                                         if (nombreMaquina.equals(maquinaMenor.getNombre())) {
+                                            System.out.println(nombreMaquina);
                                             System.out.println(maquinaMenor.getColaProcesos());
                                         } else if (nombreMaquina.equals(maquinaMayor.getNombre())) {
                                             System.out.println(maquinaMayor.getColaProcesos());
+                                            System.out.println(nombreMaquina);
                                         } else {
                                             System.out.println("Nombre de máquina incorrecto.");
+                                        }
+                                        break;
+                                    case 3:
+                                        for(int n=0; n<ProductoGeneral.productos.size();n++){
+                                            if(maquinaMenor.puedeFabricar(ProductoGeneral.productos.get(n))){
+                                                maquinaMenor.fabricar(ProductoGeneral.productos.get(n));
+                                            }
+                                            else {
+                                                maquinaMayor.fabricar(ProductoGeneral.productos.get(n));
+                                            }
+
                                         }
                                         break;
                                     default:

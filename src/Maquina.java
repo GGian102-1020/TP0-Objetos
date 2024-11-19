@@ -10,7 +10,7 @@ public abstract class Maquina {
 
     public abstract boolean puedeFabricar(Producto producto);
 
-    public abstract boolean fabricar(Producto producto);
+    public abstract void fabricar(Producto producto);
 
     public abstract boolean enUso();
 

@@ -24,13 +24,13 @@ public class MaquinaMenor extends Maquina {
     }
 
 
-    public boolean fabricar(Producto producto) {
+    public void fabricar(Producto producto) {
         if (this.uso && puedeFabricar(producto)) {
             this.ColaProcesos.add(producto.getNombre());
             producto.estado = producto.estados.get(1);
         }
         producto.estado = producto.estados.get(2);
-        return this.uso = true;
+        this.uso = true;
     }
 
     @Override
