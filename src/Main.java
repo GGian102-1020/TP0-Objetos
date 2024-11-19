@@ -73,17 +73,7 @@ public class Main {
                                             case 1:
                                                 for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
                                                     if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                                        if (maquinaMenor.getColaProcesos().contains(ProductoGeneral.productos.get(n).getNombre())) {
-                                                            System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : En espera");
-
-                                                        }
-                                                        else if (maquinaMayor.getColaProcesos().contains(ProductoGeneral.productos.get(n).getNombre())) {
-                                                            System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : En espera");
-                                                            }
-                                                        else{
-                                                            System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : Terminado");
-                                                        }
-
+                                                        System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
                                                     }
                                                 }
                                                 break;
