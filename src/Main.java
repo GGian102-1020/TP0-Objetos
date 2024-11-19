@@ -15,13 +15,15 @@ public class Main {
         HashMap<String, Integer> clientesInfo = new HashMap<>();
 
         Scanner scanner = new Scanner(System.in);
-        Menu menu = new Menu();
         MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
         MaquinaMayor maquinaMayor = new MaquinaMayor("B", 500);
 
         // Bucle principal del programa
         while (true) {
-            menu.mostrar();
+            System.out.println("Bienvenido al DEF Menu, elige una opción:");
+            System.out.println("1. Cliente");
+            System.out.println("2. Admin");
+            System.out.println("3. Salir");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
