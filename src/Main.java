@@ -21,8 +21,8 @@ public class Main {
         MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
         menu.mostrar();
         ProductoGeneral ProductoA = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
-        ProductoGeneral ProductoB = new ProductoGeneral("Puerta", 100, 110, "Madera", 10);
-        ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 110, "Madera", 10);
+        ProductoGeneral ProductoB = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
+        ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 100, "Madera", 10);
         ProductoA.setNroCliente(23);
         ProductoB.setNroCliente(23);
         ProductoC.setNroCliente(10);
@@ -86,17 +86,14 @@ public class Main {
                                         subOpcion=scanner.nextInt();
                                         break;
                                     case 2:
-                                        // Código para ver deuda
-                                        System.out.println("Deuda total actual");
-                                        float acumulador = 0;
-                                        for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
-                                            if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                                acumulador += ProductoGeneral.getClientePrecioMap().get(n);
+                                        if (ProductoGeneral.getClientePrecioMap().containsKey(nroCliente)) {
+                                            System.out.println(ProductoGeneral.getClientePrecioMap().get(nroCliente));
 
 
                                             }
-                                            }
-                                        break;
+                                            break;
+
+
                                     case 3:
                                         // Salir
                                         break;
