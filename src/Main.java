@@ -88,10 +88,10 @@ public class Main {
                                     case 2:
                                         if (ProductoGeneral.getClientePrecioMap().containsKey(nroCliente)) {
                                             System.out.println(ProductoGeneral.getClientePrecioMap().get(nroCliente));
-
-
-                                            }
-                                            break;
+                                        }
+                                        System.out.println("3. Salir");
+                                        subOpcion = scanner.nextInt();
+                                        break;
                                     case 3:
                                         break;
                                     default:
