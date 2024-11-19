@@ -116,34 +116,38 @@ public class Main {
                             int opcionA = scanner.nextInt();
                             while (opcionA != 3) {
                             switch (opcionA) {
-                                    case 1:
-                                        System.out.println("Ingrese el número de cliente: ");
-                                        nroCliente = scanner.nextInt();
-                                        for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
-                                            if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                                System.out.println(ProductoGeneral.productos.get(n).getNombre());
-                                            }
+                                case 1:
+                                    System.out.println("Ingrese el número de cliente: ");
+                                    nroCliente = scanner.nextInt();
+                                    for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
+                                        if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
+                                            System.out.println(ProductoGeneral.productos.get(n).getNombre());
                                         }
-                                        System.out.println("1. Ver pedidos por cliente");
-                                        System.out.println("2. Ver cola por máquinas");
-                                        System.out.println("3. Volver atrás");
-                                        opcionA = scanner.nextInt();
-                                        intentos = 3;
-                                        break;
+                                    }
+                                    System.out.println("1. Ver pedidos por cliente");
+                                    System.out.println("2. Ver cola por máquinas");
+                                    System.out.println("3. Volver atrás");
+                                    opcionA = scanner.nextInt();
+                                    intentos = 3;
+                                    break;
 
-                                    case 2:
-                                        String nombreMaquina = scanner.nextLine();
-                                        intentos = 3;
-                                        while(!nombreMaquina.equals(maquinaMenor.getNombre()) || !nombreMaquina.equals(maquinaMayor.getNombre())) {
-                                            System.out.println("Ingrese el nombre correcto de la máquina: ");
-                                            nombreMaquina = scanner.nextLine();
-                                            System.out.println(nombreMaquina);
-                                            if (maquinaMenor.getNombre().equals(nombreMaquina)) {
-                                                System.out.println(maquinaMenor.getColaProcesos());
-                                            }
-                                            if(maquinaMayor.getNombre().equals(nombreMaquina)) {
-                                                System.out.println(maquinaMenor.getColaProcesos());
-                                            }
+                                case 2:
+                                    String nombreMaquina = scanner.nextLine();
+                                    intentos = 3;
+                                    while (!nombreMaquina.equals(maquinaMenor.getNombre()) || !nombreMaquina.equals(maquinaMayor.getNombre())) {
+                                        System.out.println("Ingrese el nombre correcto de la máquina: ");
+                                        nombreMaquina = scanner.nextLine();
+                                        System.out.println(nombreMaquina);
+                                        if (maquinaMenor.getNombre().equals(nombreMaquina)) {
+                                            System.out.println(maquinaMenor.getColaProcesos());
+                                        }
+                                        if (maquinaMayor.getNombre().equals(nombreMaquina)) {
+                                            System.out.println(maquinaMenor.getColaProcesos());
+                                        }
+                                        System.out.println("Ingrese una nueva opción: ");
+                                        opcionA = scanner.nextInt();
+
+
                                         }
                                     case 3:
                                         break;
