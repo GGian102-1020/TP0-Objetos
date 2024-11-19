@@ -1,3 +1,4 @@
+import java.awt.im.InputContext;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -60,44 +61,75 @@ public class Main {
                             break;
                         case 2:
                             // Opción 2: Acceder a un cliente
-                            while (!clientes.containsKey(nroCliente)) {
-                                System.out.println("Ingrese el número de cliente: ");
-                                nroCliente = scanner.nextInt();
-                            }
-                            System.out.println("Bienvenido " + clientes.get(nroCliente));
-                            System.out.println("¿Qué quieres saber hoy?");
-                            System.out.println("1. Estado de productos");
-                            System.out.println("2. Deuda");
-                            System.out.println("3. Salir");
-                            int subOpcion = scanner.nextInt();
-                            while (subOpcion != 3) {
-                                switch (subOpcion) {
-                                    case 1:
-                                        for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
-                                            if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                                System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
-
-                                            }
-                                        }
-                                        System.out.println("¿Qué más puedo hacer por vos?");
-                                        System.out.println("1. Estado de productos");
-                                        System.out.println("2. Deuda");
-                                        System.out.println("3. Salir");
-                                        subOpcion=scanner.nextInt();
-                                        break;
-                                    case 2:
-                                        if (ProductoGeneral.getClientePrecioMap().containsKey(nroCliente)) {
-                                            System.out.println(ProductoGeneral.getClientePrecioMap().get(nroCliente));
-                                        }
-                                        System.out.println("3. Salir");
-                                        subOpcion = scanner.nextInt();
-                                        break;
-                                    case 3:
-                                        break;
-                                    default:
-                                        System.out.println("Opción no válida");
-
+                            try {
+                                while (!clientes.containsKey(nroCliente)) {
+                                    System.out.println("Ingrese el número de cliente: ");
+                                    nroCliente = scanner.nextInt();
                                 }
+                                System.out.println("Bienvenido " + clientes.get(nroCliente));
+                                System.out.println("¿Qué quieres saber hoy?");
+                                System.out.println("1. Estado de productos");
+                                System.out.println("2. Deuda");
+                                System.out.println("3. Hacer un pedido");
+                                System.out.println("4. Salir");
+                                int subOpcion = scanner.nextInt();
+                                while (subOpcion != 4) {
+                                    switch (subOpcion) {
+                                        case 1:
+                                            for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
+                                                if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
+                                                    System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
+
+                                                }
+                                            }
+                                            System.out.println("¿Qué más puedo hacer por vos?");
+                                            System.out.println("1. Estado de productos");
+                                            System.out.println("2. Deuda");
+                                            System.out.println("3. Hacer un pedido");
+                                            System.out.println("3. Salir");
+                                            subOpcion = scanner.nextInt();
+                                            break;
+                                        case 2:
+                                            if (ProductoGeneral.getClientePrecioMap().containsKey(nroCliente)) {
+                                                System.out.println(ProductoGeneral.getClientePrecioMap().get(nroCliente));
+                                            }
+                                            System.out.println("3. Salir");
+                                            subOpcion = scanner.nextInt();
+                                            break;
+                                        case 3:
+
+                                            System.out.println("Ingrese los datos para realizar el pedido");
+                                            System.out.println("Nombre: ");
+                                            String nombProducto = scanner.next();
+                                            System.out.println("Alto: ");
+                                            int altProducto = scanner.nextInt();
+                                            System.out.println("Ancho: ");
+                                            int anchProducto = scanner.nextInt();
+                                            System.out.println("Material: ");
+                                            String matProducto = scanner.next();
+                                            System.out.println("Peso: ");
+                                            int pesProducto = scanner.nextInt();
+                                            ProductoGeneral ProductoNew = new ProductoGeneral(nombProducto, altProducto, anchProducto, matProducto, pesProducto);
+                                            ProductoNew.setNroCliente(nroCliente);
+                                            System.out.println("Producto cargado correctamente");
+                                            System.out.println(ProductoGeneral.productos);
+                                            System.out.println("Elija una nueva opción: ");
+                                            opcion = scanner.nextInt();
+                                            break;
+
+
+                                        case 4:
+                                            break;
+                                        default:
+                                            System.out.println("Opción no válida");
+
+                                    }
+                                }
+                            }
+                            catch (InputMismatchException e){
+                                System.out.println("Error en el formato");
+                                nroCliente=0;
+                                scanner.nextLine();
                             }
                     }
                 }
