@@ -7,7 +7,7 @@ import java.util.Set;
 public class MaquinaMenor extends Maquina {
     protected ArrayList<String> ColaProcesos = new ArrayList<>();
     private Set<String> materialesAceptados;
-    private Set<String> productosNoAceptados;
+
 
 
     
@@ -27,9 +27,9 @@ public class MaquinaMenor extends Maquina {
     public void fabricar(Producto producto) {
         if (this.uso && puedeFabricar(producto)) {
             this.ColaProcesos.add(producto.getNombre());
-            producto.estado = producto.estados.get(1);
+            producto.estado = "En espera";
         }
-        producto.estado = producto.estados.get(2);
+        producto.estado = "Terminado";
         this.uso = true;
     }
 
@@ -50,4 +50,5 @@ public class MaquinaMenor extends Maquina {
     public String getNombre() {
         return nombre;
     }
+
 }

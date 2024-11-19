@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class MaquinaMayor extends Maquina {
-    protected ArrayList<String> ColaProcesos;
+    protected ArrayList<String> ColaProcesosA;
 
 
     public MaquinaMayor(String nombre, double costoOperacion) {
@@ -16,12 +16,15 @@ public class MaquinaMayor extends Maquina {
     @Override
     public void fabricar(Producto producto) {
         if(this.uso){
-            ColaProcesos.add(producto.getNombre());
-            producto.estado=producto.estados.get(1);
+            ColaProcesosA.add(producto.getNombre());
+            producto.estado="En espera";
         }
-        producto.estado=producto.estados.get(2);
+        producto.estado="Terminado";
          this.uso= true;
     }
+
+
+
 
     @Override
     public boolean enUso() {
@@ -33,7 +36,7 @@ public class MaquinaMayor extends Maquina {
     }
 
     public ArrayList<String> getColaProcesos() {
-        return ColaProcesos;
+        return ColaProcesosA;
     }
 }
 

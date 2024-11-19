@@ -1,10 +1,7 @@
-import java.awt.im.InputContext;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Random;
 
 
 public class Main {
@@ -34,7 +31,10 @@ public class Main {
                         System.out.println("2. Acceder a un cliente");
                         System.out.println("3. Volver atrás");
                         opcion = scanner.nextInt();
-                        if (opcion == 3) break; // Volver al menú principal
+                        if (opcion == 3){
+                            nroCliente=0;
+                            break;
+                        }; // Volver al menú principal
 
                         switch (opcion) {
                             case 1:
@@ -62,7 +62,6 @@ public class Main {
                                         System.out.println("Ingrese el número de cliente: ");
                                         nroCliente = scanner.nextInt();
                                     }
-                                    System.out.println("Bienvenido " + clientes.get(nroCliente));
                                     System.out.println("¿Qué quieres saber hoy?");
                                     System.out.println("1. Estado de productos");
                                     System.out.println("2. Deuda");
@@ -74,7 +73,17 @@ public class Main {
                                             case 1:
                                                 for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
                                                     if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                                        System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
+                                                        if (maquinaMenor.getColaProcesos().contains(ProductoGeneral.productos.get(n).getNombre())) {
+                                                            System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : En espera");
+
+                                                        }
+                                                        else if (maquinaMayor.getColaProcesos().contains(ProductoGeneral.productos.get(n).getNombre())) {
+                                                            System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : En espera");
+                                                            }
+                                                        else{
+                                                            System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : Terminado");
+                                                        }
+
                                                     }
                                                 }
                                                 break;
@@ -151,8 +160,8 @@ public class Main {
                                             System.out.println(nombreMaquina);
                                             System.out.println(maquinaMenor.getColaProcesos());
                                         } else if (nombreMaquina.equals(maquinaMayor.getNombre())) {
-                                            System.out.println(maquinaMayor.getColaProcesos());
                                             System.out.println(nombreMaquina);
+                                            System.out.println(maquinaMayor.getColaProcesos());
                                         } else {
                                             System.out.println("Nombre de máquina incorrecto.");
                                         }
