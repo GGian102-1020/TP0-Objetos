@@ -25,6 +25,7 @@ public class Main {
         ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 110, "Madera", 10);
         ProductoA.setNroCliente(23);
         ProductoB.setNroCliente(23);
+        ProductoC.setNroCliente(10);
         maquinaMenor.fabricar(ProductoA);
 
         opcion = scanner.nextInt();
@@ -87,9 +88,12 @@ public class Main {
                                     case 2:
                                         // Código para ver deuda
                                         System.out.println("Deuda total actual");
-                                        int acumulador = 0;
+                                        float acumulador = 0;
                                         for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
                                             if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
+                                                acumulador += ProductoGeneral.getClientePrecioMap().get(n);
+
+
                                             }
                                             }
                                         break;

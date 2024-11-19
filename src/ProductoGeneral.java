@@ -12,7 +12,7 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
     private int i;
     private double tam = getAncho() * getAlto();
     static List<ProductoGeneral> productos = new ArrayList<>();
-    private static Map<Integer, Double> clientePrecioMap = new HashMap<>();
+    protected static Map<Integer, Double> clientePrecioMap = new HashMap<>();
 
     public ProductoGeneral(String nombre, double alto, double ancho, String material, double peso) {
         super(nombre, alto, ancho, material);
