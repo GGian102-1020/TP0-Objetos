@@ -20,196 +20,158 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
         MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
-        MaquinaMayor maquinaMayor = new MaquinaMayor("B",500);
-        menu.mostrar();
+        MaquinaMayor maquinaMayor = new MaquinaMayor("B", 500);
 
-        opcion = scanner.nextInt();
-        switch (opcion) {
-            case 1:
-                while(opcion!=3) {
-                    System.out.println("1. Crear cliente");
-                    System.out.println("2. Acceder a un cliente");
-                    System.out.println("3. Volver atrás");
-                    opcion = scanner.nextInt();
-                    switch (opcion) {
-                        case 1:
-                            // Opción 1: Agregar un cliente
-                            System.out.println("Ingresar el nombre de cliente: ");
-                            String NombreCliente = scanner.nextLine();
-                            while (NombreCliente.isBlank()) {
-                                NombreCliente = scanner.nextLine();
-                            }
-                            // Generar un número de cliente único
-                            while (clientes.containsKey(nroCliente) || nroCliente == 0) {
-                                Random random = new Random();
-                                nroCliente = 23;//random.nextInt(99) + 1;
-                            }
+        do {
+            menu.mostrar();
+            opcion = scanner.nextInt();
+            scanner.nextLine(); // Limpia el buffer después de leer un entero
 
+            switch (opcion) {
+                case 1: // Menú de cliente
+                    int subOpcion = 0;
+                    while (subOpcion != 3) {
+                        System.out.println("1. Crear cliente");
+                        System.out.println("2. Acceder a un cliente");
+                        System.out.println("3. Volver atrás");
+                        subOpcion = scanner.nextInt();
+                        scanner.nextLine(); // Limpia el buffer después de leer un entero
 
-                            // Crear el HashMap de cliente con nombre y valor
-                            clientesInfo.put(NombreCliente, 0);
-                            clientes.put(nroCliente, clientesInfo);
-                            System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
-                            nroCliente = 0;
-                            break;
-                        case 2:
-                            // Opción 2: Acceder a un cliente
-                            try {
-                                while (!clientes.containsKey(nroCliente)) {
+                        switch (subOpcion) {
+                            case 1: // Crear cliente
+                                System.out.println("Ingresar el nombre de cliente: ");
+                                String NombreCliente = scanner.nextLine();
+
+                                // Validar entrada
+                                while (NombreCliente.isBlank()) {
+                                    System.out.println("El nombre no puede estar vacío. Intente de nuevo:");
+                                    NombreCliente = scanner.nextLine();
+                                }
+
+                                // Generar un número de cliente único
+                                while (clientes.containsKey(nroCliente) || nroCliente == 0) {
+                                    Random random = new Random();
+                                    nroCliente = random.nextInt(99) + 1;
+                                }
+
+                                // Crear el HashMap de cliente con nombre y valor
+                                clientesInfo.put(NombreCliente, 0);
+                                clientes.put(nroCliente, clientesInfo);
+                                System.out.println("Cliente agregado con éxito con el número de cliente asignado: " + nroCliente);
+                                nroCliente = 0;
+                                break;
+
+                            case 2: // Acceder a un cliente
+                                try {
                                     System.out.println("Ingrese el número de cliente: ");
                                     nroCliente = scanner.nextInt();
-                                }
-                                System.out.println("Bienvenido " + clientes.get(nroCliente));
-                                System.out.println("¿Qué quieres saber hoy?");
-                                System.out.println("1. Estado de productos");
-                                System.out.println("2. Deuda");
-                                System.out.println("3. Hacer un pedido");
-                                System.out.println("4. Salir");
-                                int subOpcion = scanner.nextInt();
-                                while (subOpcion != 4) {
-                                    switch (subOpcion) {
-                                        case 1:
-                                            for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
-                                                if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                                    System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
+                                    scanner.nextLine(); // Limpia el buffer después de leer un entero
 
-                                                }
+                                    if (clientes.containsKey(nroCliente)) {
+                                        System.out.println("Bienvenido " + clientes.get(nroCliente));
+                                        System.out.println("¿Qué quieres saber hoy?");
+                                        System.out.println("1. Estado de productos");
+                                        System.out.println("2. Deuda");
+                                        System.out.println("3. Hacer un pedido");
+                                        System.out.println("4. Salir");
+
+                                        int subSubOpcion = scanner.nextInt();
+                                        scanner.nextLine(); // Limpia el buffer después de leer un entero
+
+                                        while (subSubOpcion != 4) {
+                                            switch (subSubOpcion) {
+                                                case 1:
+                                                    System.out.println("Estado de productos no implementado.");
+                                                    break;
+                                                case 2:
+                                                    System.out.println("Consulta de deuda no implementada.");
+                                                    break;
+                                                case 3:
+                                                    System.out.println("Realizar pedido no implementado.");
+                                                    break;
+                                                default:
+                                                    System.out.println("Opción no válida.");
                                             }
-                                            System.out.println("¿Qué más puedo hacer por vos?");
+                                            System.out.println("¿Qué más quieres hacer?");
                                             System.out.println("1. Estado de productos");
                                             System.out.println("2. Deuda");
                                             System.out.println("3. Hacer un pedido");
                                             System.out.println("4. Salir");
-                                            subOpcion = scanner.nextInt();
-                                            break;
-                                        case 2:
-                                            if (ProductoGeneral.getClientePrecioMap().containsKey(nroCliente)) {
-                                                System.out.println(ProductoGeneral.getClientePrecioMap().get(nroCliente));
-                                            }
-                                            System.out.println("3. Salir");
-                                            subOpcion = scanner.nextInt();
-                                            break;
-                                        case 3:
-                                            System.out.println("Ingrese los datos para realizar el pedido");
-                                            System.out.println("Nombre: ");
-                                            String nombProducto = scanner.next();
-                                            System.out.println("Alto: ");
-                                            int altProducto = scanner.nextInt();
-                                            System.out.println("Ancho: ");
-                                            int anchProducto = scanner.nextInt();
-                                            System.out.println("Material: ");
-                                            String matProducto = scanner.next();
-                                            System.out.println("Peso: ");
-                                            int pesProducto = scanner.nextInt();
-                                            ProductoGeneral ProductoNew = new ProductoGeneral(nombProducto, altProducto, anchProducto, matProducto, pesProducto);
-                                            ProductoNew.setNroCliente(nroCliente);
-                                            System.out.println("Producto cargado correctamente");
-                                            System.out.println("Elija una nueva opción: ");
-                                            System.out.println("1. Estado de productos");
-                                            System.out.println("2. Deuda");
-                                            System.out.println("3. Hacer un pedido");
-                                            System.out.println("4. Salir");
-                                            subOpcion = scanner.nextInt();
-                                            scanner.nextLine();
-                                            break;
-
-
-                                        case 4:
-                                            break;
-                                        default:
-                                            System.out.println("Opción no válida");
-
+                                            subSubOpcion = scanner.nextInt();
+                                            scanner.nextLine(); // Limpia el buffer después de leer un entero
+                                        }
+                                    } else {
+                                        System.out.println("Cliente no encontrado.");
                                     }
+                                } catch (InputMismatchException e) {
+                                    System.out.println("Error: Debe ingresar un número válido.");
+                                    scanner.nextLine(); // Limpia el buffer
                                 }
-                            }
-                            catch (InputMismatchException e){
-                                System.out.println("Error en el formato");
-                                nroCliente=0;
-                                scanner.nextLine();
-                            }
+                                break;
+
+                            case 3: // Volver atrás
+                                System.out.println("Volviendo al menú principal...");
+                                break;
+
+                            default:
+                                System.out.println("Opción no válida.");
+                                break;
+                        }
                     }
-                }
+                    break;
 
-            menu.mostrar();
-            case 2:
-                while (opcion != 3) {
-                    System.out.println("Ingrese la contraseña: ");
-                    PassIngresada = scanner.nextInt();
+                case 2: // Menú de administrador
+                    intentos = 0;
                     while (intentos < 3) {
+                        System.out.println("Ingrese la contraseña: ");
+                        PassIngresada = scanner.nextInt();
+                        scanner.nextLine(); // Limpia el buffer después de leer un entero
+
                         if (PassIngresada == password) {
-                            intentos = 0; // Reinicia intentos exitosos
-                            System.out.println("1. Ver pedidos por cliente");
-                            System.out.println("2. Ver cola por máquinas");
-                            System.out.println("3. Volver atrás");
-                            int opcionA = scanner.nextInt();
-                            scanner.nextLine(); // Limpia el buffer para evitar problemas con nextLine()
+                            System.out.println("Acceso permitido.");
+                            int adminOpcion = 0;
+                            while (adminOpcion != 3) {
+                                System.out.println("1. Ver pedidos por cliente");
+                                System.out.println("2. Ver cola por máquinas");
+                                System.out.println("3. Volver atrás");
+                                adminOpcion = scanner.nextInt();
+                                scanner.nextLine(); // Limpia el buffer después de leer un entero
 
-                            while (opcionA != 3) {
-                                switch (opcionA) {
+                                switch (adminOpcion) {
                                     case 1:
-                                        System.out.println("Ingrese el número de cliente: ");
-                                        nroCliente = scanner.nextInt();
-                                        scanner.nextLine(); // Limpia el buffer
-                                        for (ProductoGeneral producto : ProductoGeneral.productos) {
-                                            if (producto.getNroCliente() == nroCliente) {
-                                                System.out.println(producto.getNombre());
-                                                intentos=0;
-                                            }
-                                        }
+                                        System.out.println("Ver pedidos por cliente no implementado.");
                                         break;
-
                                     case 2:
-                                        System.out.println("Ingrese el nombre de la máquina: ");
-                                        String nombreMaquina = scanner.nextLine();
-
-                                        // Verifica el nombre de la máquina y muestra la cola correspondiente
-                                        if (nombreMaquina.equals(maquinaMenor.getNombre())) {
-                                            System.out.println(maquinaMenor.getColaProcesos());
-                                        } else if (nombreMaquina.equals(maquinaMayor.getNombre())) {
-                                            System.out.println(maquinaMayor.getColaProcesos());
-                                        } else {
-                                            System.out.println("Nombre de máquina incorrecto.");
-                                        }
+                                        System.out.println("Ver cola por máquinas no implementado.");
                                         break;
-
+                                    case 3:
+                                        System.out.println("Volviendo al menú principal...");
+                                        break;
                                     default:
                                         System.out.println("Opción no válida.");
                                         break;
                                 }
-
-                                // Mostrar el submenú nuevamente
-                                System.out.println("1. Ver pedidos por cliente");
-                                System.out.println("2. Ver cola por máquinas");
-                                System.out.println("3. Volver atrás");
-                                opcionA = scanner.nextInt();
-                                scanner.nextLine(); // Limpia el buffer nuevamente
                             }
-
-                            break; // Sale del bucle de intentos después de opciones correctas
+                            break; // Salir del bucle de intentos
                         } else {
                             intentos++;
                             if (intentos == 3) {
-                                System.out.println("Se quedó sin intentos, cerrando el programa.");
-                                return; // Sale del programa
+                                System.out.println("Se quedó sin intentos. Cerrando el programa.");
+                                return;
                             }
-                            System.out.println("Contraseña incorrecta, le quedan " + (3 - intentos) + " intentos más:");
-                            PassIngresada = scanner.nextInt();
+                            System.out.println("Contraseña incorrecta. Le quedan " + (3 - intentos) + " intentos.");
                         }
                     }
-                }
-                break;
-            case 3:
-                break;
+                    break;
 
-            default:
-                System.out.println("Opción no válida, cerrando el menu");
-        }
+                case 3: // Salir del programa
+                    System.out.println("Saliendo del programa...");
+                    break;
+
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+        } while (opcion != 3);
     }
 }
-
-
-
-
-
-
-
