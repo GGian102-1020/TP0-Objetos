@@ -15,7 +15,7 @@ public class Main {
         int nroCliente = 0;
         HashMap<Integer, HashMap<String, Integer>> clientes = new HashMap<>();
         HashMap<String, Integer> clientesInfo = new HashMap<>();
-        List<ProductoGeneral> productos = new ArrayList<>();
+
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
         MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
@@ -25,9 +25,6 @@ public class Main {
         ProductoGeneral ProductoC = new ProductoGeneral("Ventana", 100, 110, "Madera", 10);
         ProductoA.setNroCliente(23);
         ProductoB.setNroCliente(23);
-        productos.add(ProductoA);
-        productos.add(ProductoB);
-        productos.add(ProductoC);
         maquinaMenor.fabricar(ProductoA);
         maquinaMenor.fabricar(ProductoB);
         maquinaMenor.fabricar(ProductoC);
@@ -76,9 +73,9 @@ public class Main {
                                 switch (subOpcion) {
                                     case 1:
                                         System.out.println(subOpcion);
-                                        for (int n = 0; n < productos.size(); n++) {
-                                            if (productos.get(n).getNroCliente() == nroCliente) {
-                                                System.out.println(productos.get(n).getNombre() + " : " + productos.get(n).getEstado());
+                                        for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
+                                            if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
+                                                System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
 
                                             }
                                         }
@@ -103,7 +100,7 @@ public class Main {
                     }
                 }
 
-
+            menu.mostrar();
             case 2:
                 System.out.println("Ingrese la contraseña: ");
                 PassIngresada = scanner.nextInt();
@@ -118,10 +115,10 @@ public class Main {
                             case 1:
                                 System.out.println("Ingrese el número de cliente: ");
                                 nroCliente = scanner.nextInt();
-                                System.out.println(productos);
-                                for (int n = 0; n < productos.size(); n++) {
-                                    if (productos.get(n).getNroCliente() == nroCliente) {
-                                        System.out.println(productos.get(n).getNombre());
+                                System.out.println(ProductoGeneral.productos);
+                                for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
+                                    if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
+                                        System.out.println(ProductoGeneral.productos.get(n).getNombre());
                                     }
                                 }
                                 intentos = 3;

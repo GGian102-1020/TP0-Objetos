@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductoGeneral extends Producto implements CalcularPrecio {
 
     private double precioPorKilo = 1000.5;
@@ -6,13 +9,18 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
     private double precio = 0;
     private int i;
     private double tam = getAncho() * getAlto();
+    static List<ProductoGeneral> productos = new ArrayList<>();
 
     public ProductoGeneral(String nombre, double alto, double ancho, String material, double peso) {
         super(nombre, alto, ancho, material);
         this.peso = peso;
         int i = 0;
         this.estado = (estados.get(i));
+        ProductoGeneral producto = new ProductoGeneral(nombre, alto, ancho, material, peso);
+        productos.add(producto);
     }
+
+
 
     @Override
     public boolean verificarProduccion(Maquina maquina) {
