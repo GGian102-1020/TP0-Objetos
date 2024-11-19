@@ -19,6 +19,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
         MaquinaMenor maquinaMenor = new MaquinaMenor("A", 200);
+        MaquinaMayor maquinaMayor = new MaquinaMayor("B",500);
         menu.mostrar();
         ProductoGeneral ProductoA = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
         ProductoGeneral ProductoB = new ProductoGeneral("Puerta", 100, 100, "Madera", 10);
@@ -72,7 +73,6 @@ public class Main {
                             while (subOpcion != 3) {
                                 switch (subOpcion) {
                                     case 1:
-                                        System.out.println(subOpcion);
                                         for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
                                             if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
                                                 System.out.println(ProductoGeneral.productos.get(n).getNombre() + " : " + ProductoGeneral.productos.get(n).getEstado());
@@ -92,10 +92,7 @@ public class Main {
 
                                             }
                                             break;
-
-
                                     case 3:
-                                        // Salir
                                         break;
                                     default:
                                         System.out.println("Opción no válida");
@@ -137,11 +134,14 @@ public class Main {
                                     case 2:
                                         String nombreMaquina = scanner.nextLine();
                                         intentos = 3;
-                                        while(!nombreMaquina.equals(maquinaMenor.getNombre())) {
+                                        while(!nombreMaquina.equals(maquinaMenor.getNombre()) || !nombreMaquina.equals(maquinaMayor.getNombre())) {
                                             System.out.println("Ingrese el nombre correcto de la máquina: ");
                                             nombreMaquina = scanner.nextLine();
                                             System.out.println(nombreMaquina);
                                             if (maquinaMenor.getNombre().equals(nombreMaquina)) {
+                                                System.out.println(maquinaMenor.getColaProcesos());
+                                            }
+                                            if(maquinaMayor.getNombre().equals(nombreMaquina)) {
                                                 System.out.println(maquinaMenor.getColaProcesos());
                                             }
                                         }

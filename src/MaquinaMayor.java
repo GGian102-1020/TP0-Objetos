@@ -27,5 +27,9 @@ public class MaquinaMayor extends Maquina {
     public boolean enUso() {
         return this.uso;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
 }
 
