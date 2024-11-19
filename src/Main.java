@@ -104,65 +104,69 @@ public class Main {
 
             menu.mostrar();
             case 2:
-                while(opcion!=3) {
+                while (opcion != 3) {
                     System.out.println("Ingrese la contraseña: ");
                     PassIngresada = scanner.nextInt();
-                    while (intentos < 2)
+                    while (intentos < 3) {
                         if (PassIngresada == password) {
-                            intentos += 1;
+                            intentos = 0; // Reinicia intentos exitosos
                             System.out.println("1. Ver pedidos por cliente");
                             System.out.println("2. Ver cola por máquinas");
                             System.out.println("3. Volver atrás");
                             int opcionA = scanner.nextInt();
+                            scanner.nextLine(); // Limpia el buffer para evitar problemas con nextLine()
+
                             while (opcionA != 3) {
-                            switch (opcionA) {
-                                case 1:
-                                    System.out.println("Ingrese el número de cliente: ");
-                                    nroCliente = scanner.nextInt();
-                                    for (int n = 0; n < ProductoGeneral.productos.size(); n++) {
-                                        if (ProductoGeneral.productos.get(n).getNroCliente() == nroCliente) {
-                                            System.out.println(ProductoGeneral.productos.get(n).getNombre());
+                                switch (opcionA) {
+                                    case 1:
+                                        System.out.println("Ingrese el número de cliente: ");
+                                        nroCliente = scanner.nextInt();
+                                        scanner.nextLine(); // Limpia el buffer
+                                        for (ProductoGeneral producto : ProductoGeneral.productos) {
+                                            if (producto.getNroCliente() == nroCliente) {
+                                                System.out.println(producto.getNombre());
+                                            }
                                         }
-                                    }
-                                    System.out.println("1. Ver pedidos por cliente");
-                                    System.out.println("2. Ver cola por máquinas");
-                                    System.out.println("3. Volver atrás");
-                                    opcionA = scanner.nextInt();
-                                    intentos = 3;
-                                    break;
-
-                                case 2:
-                                    String nombreMaquina = scanner.nextLine();
-                                    intentos = 3;
-                                    while (!nombreMaquina.equals(maquinaMenor.getNombre()) || !nombreMaquina.equals(maquinaMayor.getNombre())) {
-                                        System.out.println("Ingrese el nombre correcto de la máquina: ");
-                                        nombreMaquina = scanner.nextLine();
-                                        System.out.println(nombreMaquina);
-                                        if (maquinaMenor.getNombre().equals(nombreMaquina)) {
-                                            System.out.println(maquinaMenor.getColaProcesos());
-                                        }
-                                        if (maquinaMayor.getNombre().equals(nombreMaquina)) {
-                                            System.out.println(maquinaMayor.getColaProcesos());
-                                        }
-                                        System.out.println("Ingrese una nueva opción: ");
-                                        opcionA = scanner.nextInt();
-
-
-                                        }
-                                    case 3:
                                         break;
 
+                                    case 2:
+                                        System.out.println("Ingrese el nombre de la máquina: ");
+                                        String nombreMaquina = scanner.nextLine();
+
+                                        // Verifica el nombre de la máquina y muestra la cola correspondiente
+                                        if (nombreMaquina.equals(maquinaMenor.getNombre())) {
+                                            System.out.println(maquinaMenor.getColaProcesos());
+                                        } else if (nombreMaquina.equals(maquinaMayor.getNombre())) {
+                                            System.out.println(maquinaMayor.getColaProcesos());
+                                        } else {
+                                            System.out.println("Nombre de máquina incorrecto.");
+                                        }
+                                        break;
+
+                                    default:
+                                        System.out.println("Opción no válida.");
+                                        break;
                                 }
+
+                                // Mostrar el submenú nuevamente
+                                System.out.println("1. Ver pedidos por cliente");
+                                System.out.println("2. Ver cola por máquinas");
+                                System.out.println("3. Volver atrás");
+                                opcionA = scanner.nextInt();
+                                scanner.nextLine(); // Limpia el buffer nuevamente
                             }
+
+                            break; // Sale del bucle de intentos después de opciones correctas
                         } else {
-                            intentos += 1;
+                            intentos++;
+                            if (intentos == 3) {
+                                System.out.println("Se quedó sin intentos, cerrando el programa.");
+                                return; // Sale del programa
+                            }
                             System.out.println("Contraseña incorrecta, le quedan " + (3 - intentos) + " intentos más:");
                             PassIngresada = scanner.nextInt();
-                            if (intentos == 2) {
-                                System.out.println("Se quedó sin intentos, cerrando el programa");
-                                break;
-                            }
                         }
+                    }
                 }
                 break;
             case 3:
