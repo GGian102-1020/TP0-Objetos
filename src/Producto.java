@@ -7,7 +7,7 @@ public abstract class Producto {
     private double ancho;
     private String material;
     protected String estado;
-    private static List<String> estados = new ArrayList<>(Arrays.asList("En espera", "En producción", "Terminado"));
+    protected static List<String> estados = new ArrayList<>(Arrays.asList("En espera", "En producción", "Terminado"));
     protected int nroCliente;
 
     public Producto(String nombre, double alto, double ancho, String material) {

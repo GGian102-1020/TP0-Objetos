@@ -26,8 +26,7 @@ public class Main {
         ProductoA.setNroCliente(23);
         ProductoB.setNroCliente(23);
         maquinaMenor.fabricar(ProductoA);
-        maquinaMenor.fabricar(ProductoB);
-        maquinaMenor.fabricar(ProductoC);
+
         opcion = scanner.nextInt();
         switch (opcion) {
             case 1:

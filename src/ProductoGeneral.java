@@ -16,8 +16,8 @@ public class ProductoGeneral extends Producto implements CalcularPrecio {
         this.peso = peso;
         int i = 0;
         this.estado = (estados.get(i));
-        ProductoGeneral producto = new ProductoGeneral(nombre, alto, ancho, material, peso);
-        productos.add(producto);
+        productos.add(this);
+
     }
 
 
